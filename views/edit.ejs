@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Book Information</title>
+    <style>
+        label {
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron text-center">
+        <h1>Update Book Information</h1>
+    </div>
+    <form action="/edit" method="POST">
+        <input type="hidden" id="_id" name="_id" value="<%= item._id %>">
+        <script>console.log(ObjectID(item._id));</script>
+        <label for='name'><b>Book Name*:</b></label><br>
+        <input type="text" id="name" name="name" placeholder="" value="<%= item.Name %>"><br><br>
+        <label for='author'><b>Author*:</b></label><br>
+        <input type="text" id="author" name="author" placeholder="" value="<%= item.Author %>"><br><br>
+        <input type="hidden" id="code" name="code" value="<%= item.Code %>">
+        <label for='type'><b>Type*:</b></label><br>
+<% for (let i = 0; i < type.length; i++) { %>
+    <label for="type<%= i %>">
+        <input type="checkbox" id="type<%= i %>" name="selectedTypes" value="<%= type[i] %>"
+            <% if (item.Type === type[i]) { %>checked<% } %>
+            onclick="limitCheckboxSelectionType(this)">
+        <%= type[i] %>
+    </label>
+<% } %>
+        <script>
+            function limitCheckboxSelectionType() {
+                var checkboxes = document.querySelectorAll('input[name="selectedTypes"]');
+                var checkedCount = 0;
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked) {
+                        checkedCount++;
+                    }
+                }
+                if (checkedCount > 1) {
+                    event.preventDefault();
+                    return false;
+                }
+            }
+        </script>
+        <br><br>
+
+        <label for='theme'><b>Theme*:</b> <small>(At least one theme)</small></label><br>
+        <% for (let i = 0; i < themes.length; i++) { %>
+            <label for="theme<%= i %>">
+                <input type="checkbox" id="theme<%= i %>" name="selectedThemes" value="<%= themes[i] %>"
+                    <% if (item.Theme && item.Theme.includes(themes[i])) { %>checked<% } %>
+                    onclick="limitCheckboxSelectionThemes(this)">
+                <%= themes[i] %>
+            </label>
+        <% } %>
+
+        <script>
+            function limitCheckboxSelectionThemes() {
+                var checkboxes = document.querySelectorAll('input[name="selectedThemes"]');
+                var checkedCount = 0;
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked) {
+                        checkedCount++;
+                    }
+                }
+                if (checkedCount > 3) {
+                    event.preventDefault();
+                    return false;
+                }
+            }
+        </script>
+        <br><br>
+        <input type="hidden" id="status" name="status" value="<%= item.Status %>">
+        <label for='launchdate'><b>Launch Date*:</b><small>(DD-MM-YYYY)</small></label><br>
+        <input type="text" id="launchdate" name="launchdate" placeholder="" value="<%= item.LaunchDate%>"><br><br>
+        <input type="hidden" id="borrowrecord" name="borrowrecord" value="<%= item.BorrowRecord %>">
+        <input type="submit" value="Update" />
+    </form>
+</body>
+</html>
