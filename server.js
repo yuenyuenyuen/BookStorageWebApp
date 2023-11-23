@@ -23,6 +23,7 @@ app.use(session({
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use('/css', express.static(__dirname + '/node_modules/startbootstrap-creative/dist/css'));
 
 const createDocument = function(db, createddocuments, callback){
     const client = new MongoClient(mongourl);

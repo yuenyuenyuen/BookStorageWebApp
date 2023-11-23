@@ -4,7 +4,7 @@ Group: 17
 Name: 
 Yuen Shing Hong (13105763)
 
-Application link: https://projectsample381.render.com/
+Application link: https://three81prj-bookinformationsystem.onrender.com/
 
 ********************************************
 # Login
@@ -77,11 +77,12 @@ Create operation is post request, and all information is in body of request.
 
 ********************************************
 # Restful
-In this project, there are three HTTP request types, post, get and delete.
+In this project, there are four HTTP request types, post, get and delete.
 - Post 
 	Post request is used for insert.
 	Path URL: /api/create
-	Test: curl -X POST -H "Content-Type: application/json" -d "{\"name\":\"Good Book\",\"author\":\"Yuen Shing Hong\",\"type\":\"Adult\",\"theme\":\"Computer, Education\",\"launchdate\":\"12-11-2023\"}" http://localhost:8099/api/create
+	
+	Test: curl -X POST -H "Content-Type: application/json" -d "{\"name\":\"Good Book\",\"author\":\"Yuen Shing Hong\",\"type\":\"Adult\",\"theme\":\"Computer, Education\",\"launchdate\":\"12-11-2023\"}" https://three81prj-bookinformationsystem.onrender.com/api/create
 
 - Get
 	Get request is used for find.
@@ -90,13 +91,13 @@ In this project, there are three HTTP request types, post, get and delete.
 	Remind that if the Book name have a space, need to replace to %20
 	e.g. Good Book > Good%20Book
 	
-	Test: curl -X GET http://localhost:8099/api/search/Good%20Book
+	Test: curl -X GET https://three81prj-bookinformationsystem.onrender.com/api/search/Good%20Book
 
 -Put
 	Put request is used for update.
 	Path URL: /api/edit
 
-Test: curl -X PUT -H "Content-Type: application/json" -d "{\"name\":\"Good Book\",\"author\":\"Yuen Shing Hong\",\"type\":\"Adult\",\"theme\":\"Computer, Education\",\"launchdate\":\"12-11-2003\"}" http://localhost:8099/api/edit
+Test: curl -X PUT -H "Content-Type: application/json" -d "{\"name\":\"Good Book\",\"author\":\"Yuen Shing Hong\",\"type\":\"Adult\",\"theme\":\"Computer, Education\",\"launchdate\":\"12-11-2003\"}" https://three81prj-bookinformationsystem.onrender.com/api/edit
 
 - Delete
 	Delete request is used for deletion.
@@ -105,16 +106,16 @@ Test: curl -X PUT -H "Content-Type: application/json" -d "{\"name\":\"Good Book\
 	Remind that if the Book name have a space, need to replace to %20
 	e.g. Good Book > Good%20Book
 
-	Test: curl -X DELETE http://localhost:8099/api/delete/Good%20Book
+	Test: curl -X DELETE https://three81prj-bookinformationsystem.onrender.com/api/delete/Good%20Book
 
 For all restful CRUD services, login should be done at first.
 
 
-curl -X POST -H "Content-Type: application/json" -d "{\"name\":\"Good Book\",\"author\":\"Yuen Shing Hong\",\"type\":\"Adult\",\"theme\":\"Computer, Education\",\"launchdate\":\"12-11-2023\"}" http://localhost:8099/api/create
+curl -X POST -H "Content-Type: application/json" -d "{\"name\":\"Good Book\",\"author\":\"Yuen Shing Hong\",\"type\":\"Adult\",\"theme\":\"Computer, Education\",\"launchdate\":\"12-11-2023\"}" https://three81prj-bookinformationsystem.onrender.com/api/create
 
-curl -X GET http://localhost:8099/api/search/Good%20Book
+curl -X GET https://three81prj-bookinformationsystem.onrender.com/api/search/Good%20Book
 
-curl -X PUT -H "Content-Type: application/json" -d "{\"name\":\"Good Book\",\"author\":\"Yuen Shing Hong\",\"type\":\"Adult\",\"theme\":\"Computer, Education\",\"launchdate\":\"12-11-2003\"}" http://localhost:8099/api/edit
+curl -X PUT -H "Content-Type: application/json" -d "{\"name\":\"Good Book\",\"author\":\"Yuen Shing Hong\",\"type\":\"Adult\",\"theme\":\"Computer, Education\",\"launchdate\":\"12-11-2003\"}" https://three81prj-bookinformationsystem.onrender.com/api/edit
 
-curl -X DELETE http://localhost:8099/api/delete/Good%20Book
+curl -X DELETE https://three81prj-bookinformationsystem.onrender.com/api/delete/Good%20Book
 
